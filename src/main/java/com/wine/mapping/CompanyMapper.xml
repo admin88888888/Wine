@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wine.dao.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.wine.entity.Company">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="curl" jdbcType="VARCHAR" property="curl" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="weixin" jdbcType="VARCHAR" property="weixin" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="revalue" jdbcType="INTEGER" property="revalue" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="ms" jdbcType="DATE" property="ms" />
+    <result column="ctype" jdbcType="VARCHAR" property="ctype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cname, curl, address, introduce, phone, logo, weixin, image, revalue, flag, brand, 
+    size, ms, ctype
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from company
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wine.entity.Company">
+    insert into company (id, cname, curl, 
+      address, introduce, phone, 
+      logo, weixin, image, 
+      revalue, flag, brand, 
+      size, ms, ctype)
+    values (#{id,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{curl,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{revalue,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{brand,jdbcType=VARCHAR}, 
+      #{size,jdbcType=VARCHAR}, #{ms,jdbcType=DATE}, #{ctype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wine.entity.Company">
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cname != null">
+        cname,
+      </if>
+      <if test="curl != null">
+        curl,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="introduce != null">
+        introduce,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="weixin != null">
+        weixin,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="revalue != null">
+        revalue,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="ms != null">
+        ms,
+      </if>
+      <if test="ctype != null">
+        ctype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="curl != null">
+        #{curl,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="revalue != null">
+        #{revalue,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="ms != null">
+        #{ms,jdbcType=DATE},
+      </if>
+      <if test="ctype != null">
+        #{ctype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wine.entity.Company">
+    update company
+    <set>
+      <if test="cname != null">
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="curl != null">
+        curl = #{curl,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="revalue != null">
+        revalue = #{revalue,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="brand != null">
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="ms != null">
+        ms = #{ms,jdbcType=DATE},
+      </if>
+      <if test="ctype != null">
+        ctype = #{ctype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wine.entity.Company">
+    update company
+    set cname = #{cname,jdbcType=VARCHAR},
+      curl = #{curl,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      revalue = #{revalue,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      brand = #{brand,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      ms = #{ms,jdbcType=DATE},
+      ctype = #{ctype,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!-- 额外增加 -->
+  <select id="findAll" resultType="com.wine.entity.Company">
+    select <include refid="Base_Column_List"></include>
+    from company
+  </select>
+  <select id="findten" resultType="com.wine.entity.Company">
+    select * from company limit 10
+  </select>
+
+</mapper>

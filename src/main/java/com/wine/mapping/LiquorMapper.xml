@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wine.dao.LiquorMapper">
+  <resultMap id="BaseResultMap" type="com.wine.entity.Liquor">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="typeid" jdbcType="INTEGER" property="typeid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="odrotype" jdbcType="VARCHAR" property="odrotype" />
+    <result column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="kind" jdbcType="VARCHAR" property="kind" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="content" jdbcType="INTEGER" property="content" />
+    <result column="milliliter" jdbcType="INTEGER" property="milliliter" />
+    <result column="trial" jdbcType="INTEGER" property="trial" />
+    <result column="dosing" jdbcType="VARCHAR" property="dosing" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, typeid, name, cid, odrotype, rid, price, kind, pname, content, milliliter, trial, 
+    dosing,image
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from liquor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from liquor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wine.entity.Liquor">
+    insert into liquor (id, typeid, name, 
+      cid, odrotype, rid, 
+      price, kind, pname, 
+      content, milliliter, trial, 
+      dosing,image)
+    values (#{id,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{cid,jdbcType=INTEGER}, #{odrotype,jdbcType=VARCHAR}, #{rid,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{kind,jdbcType=VARCHAR}, #{pname,jdbcType=VARCHAR}, 
+      #{content,jdbcType=INTEGER}, #{milliliter,jdbcType=INTEGER}, #{trial,jdbcType=INTEGER}, 
+      #{dosing,jdbcType=VARCHAR},#{image,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wine.entity.Liquor">
+    insert into liquor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="typeid != null">
+        typeid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="odrotype != null">
+        odrotype,
+      </if>
+      <if test="rid != null">
+        rid,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="kind != null">
+        kind,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="milliliter != null">
+        milliliter,
+      </if>
+      <if test="trial != null">
+        trial,
+      </if>
+      <if test="dosing != null">
+        dosing,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="odrotype != null">
+        #{odrotype,jdbcType=VARCHAR},
+      </if>
+      <if test="rid != null">
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null">
+        #{kind,jdbcType=VARCHAR},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=INTEGER},
+      </if>
+      <if test="milliliter != null">
+        #{milliliter,jdbcType=INTEGER},
+      </if>
+      <if test="trial != null">
+        #{trial,jdbcType=INTEGER},
+      </if>
+      <if test="dosing != null">
+        #{dosing,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wine.entity.Liquor">
+    update liquor
+    <set>
+      <if test="typeid != null">
+        typeid = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="odrotype != null">
+        odrotype = #{odrotype,jdbcType=VARCHAR},
+      </if>
+      <if test="rid != null">
+        rid = #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null">
+        kind = #{kind,jdbcType=VARCHAR},
+      </if>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=INTEGER},
+      </if>
+      <if test="milliliter != null">
+        milliliter = #{milliliter,jdbcType=INTEGER},
+      </if>
+      <if test="trial != null">
+        trial = #{trial,jdbcType=INTEGER},
+      </if>
+      <if test="dosing != null">
+        dosing = #{dosing,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wine.entity.Liquor">
+    update liquor
+    set typeid = #{typeid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=INTEGER},
+      odrotype = #{odrotype,jdbcType=VARCHAR},
+      rid = #{rid,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      kind = #{kind,jdbcType=VARCHAR},
+      pname = #{pname,jdbcType=VARCHAR},
+      content = #{content,jdbcType=INTEGER},
+      milliliter = #{milliliter,jdbcType=INTEGER},
+      trial = #{trial,jdbcType=INTEGER},
+      dosing = #{dosing,jdbcType=VARCHAR}
+      image = #{image,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--额外添加-->
+  <!--A区22个特别推荐-->
+  <select id="selectLiquorRecommend" resultType="com.wine.entity.Liquor">
+    select * from liquor order by price desc limit 22
+  </select>
+
+  <!--畅销新品招商-->
+  <select id="selectGoodsNewJion" resultType="com.wine.entity.Liquor">
+    select id,name,pname,image from liquor order by price  limit 15
+  </select>
+  <!--B区 招商爆款-综合酒水-->
+  <select id="selectSynthesizeLiquor" resultType="com.wine.entity.Liquor">
+    select * from liquor
+      where price &lt; 200 and price &gt;100 limit 11
+  </select>
+  <!--招商C区-综合酒水(啤酒)-->
+  <select id="selectPLiquor" resultType="com.wine.entity.Liquor">
+    select *  from liquor where kind ="啤酒"  limit 10
+  </select>
+
+  <!--招商D区-综合酒水(葡萄酒)-->
+  <select id="selectPuTaoLiquor" resultType="com.wine.entity.Liquor">
+    select *  from liquor where kind ="葡萄酒"  limit 12
+  </select>
+
+  <!--招商E区-综合酒水(洋酒)-->
+  <select id="selectYangLiquor" resultType="com.wine.entity.Liquor">
+    select * from liquor where kind ="洋酒"  limit 12
+  </select>
+  <!--招商F区-综合酒水(白酒)-->
+  <select id="selectBaiLiquor" resultType="com.wine.entity.Liquor">
+    select * from liquor where kind ="白酒" order by price limit 12
+  </select>
+  <!--招商G区-综合酒水(黄酒)-->
+  <select id="selectYellowLiquor" resultType="com.wine.entity.Liquor">
+    select * from liquor where kind ="黄酒"  limit 12
+  </select>
+  <!--招商J区-综合酒水-->
+  <select id="selectJLiquor" resultType="com.wine.entity.Liquor">
+    select * from liquor where kind ="白酒" order by price desc limit 12
+  </select>
+
+  <!--爆款招商区-->
+  <select id="selectHotLiquor" resultType="com.wine.entity.Liquor">
+    select * from liquor where price > 200 order by price desc limit 11
+  </select>
+
+  <!--特惠招商区-->
+  <select id="selectLitterLiquor" resultType="com.wine.entity.Liquor">
+    select * from liquor where price > 50 order by price desc limit 12
+  </select>
+
+  <!--根据酒的类型，以及搜索框的内容-->
+  <select id="selectjiu" parameterType="map" resultType="com.wine.entity.Liquor">
+      select *  from liquor
+      <where>
+        <if test="kind != null">
+          and kind = #{kind}
+        </if>
+        <if test="searchstr != null">
+          and pname like '%${searchstr}%'
+        </if>
+      </where>
+  </select>
+
+
+  <select id="reselect" resultType="com.wine.entity.Liquor">
+    select *  from liquor order by price  limit 4
+  </select>
+
+
+  <select id="mingjiudaili" resultType="com.wine.entity.Liquor">
+    select *  from liquor order by price  limit 18
+  </select>
+
+</mapper>

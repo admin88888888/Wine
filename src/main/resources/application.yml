@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.112.21.225:3306/wine_project?serverTimezone=UTC&characterEncoding=UTF8
+    username: root
+    password: 123
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+mybatis:
+    mapper-locations: classpath*:com/wine/mapping/*.xml
