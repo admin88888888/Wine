@@ -9,10 +9,7 @@ import com.wine.util.JsonUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,5 +54,18 @@ public class NewGoodsController {
             return map;
         }
     }
+    @CrossOrigin
+    @PostMapping("/newgoods/addnewgoods.do")
+    @ApiOperation(value = "新闻添加", notes = "添加新闻")
+    public JsonBean addNewgoods(@RequestBody NewGoods newGoods){
+        int i = newGoodsService.insertSelective(newGoods);
+        if (i == 1){
+            return JsonUtil.createJsonBean(1000,"添加成功",null);
+        }else {
+            return JsonUtil.createJsonBean(1000,"添加失败",null);
+        }
+    }
+
+
 
 }

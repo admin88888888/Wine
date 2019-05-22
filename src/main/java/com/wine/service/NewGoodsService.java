@@ -12,4 +12,6 @@ public interface NewGoodsService {
 
     public List<NewGoods> findAllNews(int page);
 
+    int insertSelective(NewGoods record);
+
 }

@@ -17,6 +17,7 @@ public interface NewGoodsMapper {
 
     int updateByPrimaryKey(NewGoods record);
 
+
     /**
      * 展示新品酒水新闻 限制8条
      * @return

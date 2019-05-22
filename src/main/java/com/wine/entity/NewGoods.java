@@ -1,12 +1,14 @@
 package com.wine.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class NewGoods {
     private Integer id;
 
     private String title;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date time;
 
     private String origin;

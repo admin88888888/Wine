@@ -13,7 +13,6 @@ public class NewGoodsServiceImpl implements NewGoodsService {
 
     @Autowired
     private NewGoodsMapper newGoodsMapper;
-
     @Override
     public List<NewGoods> findByAll() {
         List<NewGoods> list = newGoodsMapper.findAll();
@@ -31,5 +30,11 @@ public class NewGoodsServiceImpl implements NewGoodsService {
     public List<NewGoods> findAllNews(int page) {
         List<NewGoods> list = newGoodsMapper.selectAll();
         return list;
+    }
+
+    @Override
+    public int insertSelective(NewGoods record) {
+        int i = newGoodsMapper.insertSelective(record);
+        return i;
     }
 }
