@@ -4,7 +4,6 @@ package com.tasty.dao;
 import com.tasty.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.annotations.Insert;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -27,13 +26,11 @@ public interface UserDao {
 package com.wine.dao;
 import com.wine.entity.User;
 import org.apache.ibatis.annotations.*;
-
 import java.util.List;
 
 /**
  * Created by Administrator on 2019/4/27.
  */
-@Mapper
 public interface UserDao {
     int save();
     @Select("select * from user where name = #{name}")
@@ -56,5 +53,12 @@ public interface UserDao {
     @Update("update user set password = #{password} where phone = #{phone}")
     void updatePassword(@Param("phone") String phone,@Param("password") String password);
 
+    @Select("select * from user where phone = #{phone}")
+    User selectUserByPhone(@Param("phone") String phone);
+
+    @Select("select * from user where id = #{id}")
+    User selectUserById(@Param("id") int id);
+
+    void updateByPrimaryKeySelective(User user);
 }
 

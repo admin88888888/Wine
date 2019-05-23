@@ -1,6 +1,8 @@
 package com.wine.service.impl;
 
 import com.wine.common.JsonBean;
+import com.wine.dao.UserDao;
+import com.wine.entity.User;
 import com.wine.service.CodeService;
 import com.wine.util.AliyunSmsUtil;
 import com.wine.util.JedisUtil;
@@ -18,6 +20,9 @@ import java.util.Objects;
 public class CodeServcieImpl implements CodeService {
     @Autowired
     private JedisUtil jedisUtil;
+
+    @Autowired
+    private UserDao userDao;
     @Override
     public JsonBean sendMsg(String phone) {
         //先验证之前1分钟内是否发过短信、之前3分钟有没有过验证码
@@ -62,9 +67,13 @@ public class CodeServcieImpl implements CodeService {
     @Override
     public JsonBean checkCode(String phone, String code) {
         String servercode=jedisUtil.getStr("register:"+phone);
+        User user = userDao.selectUserByPhone(phone);
+        if (user != null) {
+            return JsonUtil.createJsonBean(1001,"手机号不正确",null);
+        }
         if(Objects.equals(code,servercode)){
             //验证通过
-            return JsonUtil.createJsonBean(1000,"稍后重试",null);
+            return JsonUtil.createJsonBean(1000,"OK",null);
         }else {
             return JsonUtil.createJsonBean(1001,"验证码错误",null);
         }

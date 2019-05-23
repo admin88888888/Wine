@@ -28,7 +28,7 @@ public class SmsController {
     }
     @CrossOrigin
     @ApiOperation(value = "校验短信验证码",notes = "校验短信验证码")
-    @GetMapping("sms/checkcode.do")
+    @PostMapping("sms/checkcode.do")
     public JsonBean checkCode(String phone,String code){
         return codeService.checkCode(phone,code);
     }

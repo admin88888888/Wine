@@ -2,6 +2,7 @@
 package com.wine.service.impl;
 import com.wine.dao.UserDao;
 import com.wine.entity.User;
+import com.wine.service.CodeService;
 import com.wine.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,9 +45,11 @@ public class UserServiceImpl implements UserService {
 
     }
 
+
     @Override
     public void editUser(User user) {
-        userDao.editUser(user);
+        System.out.println(user);
+        userDao.updateByPrimaryKeySelective(user);
     }
 
     @Override
@@ -70,4 +73,6 @@ public class UserServiceImpl implements UserService {
         List<User> users = userDao.selectByType(type);
         return users;
     }
+
+
 }

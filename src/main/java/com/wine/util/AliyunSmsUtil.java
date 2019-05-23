@@ -17,7 +17,7 @@ import java.util.Objects;
 public class AliyunSmsUtil {
     //发送验证码
     public static boolean sendSms(String phone, int code) {
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAIhTvqTSmlmjeQ", "X7X9w0Ck5GEIWgP9tl0Q6sgmFjQuMv");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAIYO8gTEviLPF3", "qMrqwIUqBfNuwdCJGYCRm3l6oq51pe");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setMethod(MethodType.POST);
@@ -26,8 +26,8 @@ public class AliyunSmsUtil {
         request.setAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", phone);
-        request.putQueryParameter("SignName", "来自风的短信");
-        request.putQueryParameter("TemplateCode", "SMS_114390520");
+        request.putQueryParameter("SignName", "天天二手车");
+        request.putQueryParameter("TemplateCode", "SMS_164510203");
         request.putQueryParameter("TemplateParam", "{\"code\":\"" + code + "\"}");
         try {
             CommonResponse response = client.getCommonResponse(request);

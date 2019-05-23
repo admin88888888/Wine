@@ -43,6 +43,7 @@ package com.wine.controller;
 
 import com.wine.common.Common;
 import com.wine.common.JsonBean;
+import com.wine.dao.UserDao;
 import com.wine.entity.User;
 import com.wine.service.CodeService;
 import com.wine.service.UserService;
@@ -65,6 +66,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private CodeService codeService;
+    @Autowired
+    private UserDao userDao;
     @CrossOrigin
     @ApiOperation(value = "用户注册",notes = "用户注册")
     //注册
@@ -95,10 +98,11 @@ public class UserController {
         return JsonUtil.createJsonBean(1000,"修改成功",null);
     }
     @CrossOrigin
-    @ApiOperation(value = "个人资料修改",notes = "个人资料修改")
+    @ApiOperation(value = "个人用户信息修改",notes = "个人用户信息修改")
     @GetMapping("editUser.do")
     public JsonBean editUser(User user){
         userService.editUser(user);
+        System.out.println(user);
         return JsonUtil.createJsonBean(1000,"修改成功",null);
     }
     @CrossOrigin
@@ -139,7 +143,14 @@ public class UserController {
         return JsonUtil.createJsonBean(1000,"返回成功",users);
     }
 
-
+    @CrossOrigin
+    @ApiOperation(value = "根据id获取用户信息",notes = "根据id获取用户信息")
+    @PostMapping("selectUserById.do")
+    public JsonBean selectUserById(HttpSession session){
+        User user = (User)session.getAttribute(Common.LOGIN_USER);
+        User user2 = userDao.selectUserById(user.getId());
+        return JsonUtil.createJsonBean(1000,"OK",user);
+    }
 
 }
 
