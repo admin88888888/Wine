@@ -144,7 +144,7 @@ public class UserController {
     }
 
     @CrossOrigin
-    @ApiOperation(value = "根据id获取用户信息",notes = "根据id获取用户信息")
+    @ApiOperation(value = "获取用户信息，先登录，不需要传值",notes = "获取用户信息")
     @PostMapping("selectUserById.do")
     public JsonBean selectUserById(HttpSession session){
         User user = (User)session.getAttribute(Common.LOGIN_USER);
